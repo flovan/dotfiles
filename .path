@@ -1,0 +1,2 @@
+# Use homebrew installed unix tools over the default ones
+$PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
