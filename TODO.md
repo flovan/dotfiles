@@ -17,3 +17,5 @@
 - Find out how to install ST packages + themes + settings
 - Move over custom shell functions and aliases from Work machine
 	- Hook up webfont script to Bramstein's brew tools (see `brew.sh`)
+- Find out how to install Safari / Chrome plugins
+- Need more privacy? https://fix-macosx.com
