@@ -7,6 +7,7 @@
 		- LittleIpsum
 		- Office (?)
 		- Xcode
+		- Feedly
 	- Non-MAS
 		- Fontyou
 		- Infinit

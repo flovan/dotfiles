@@ -74,6 +74,7 @@ caskapps=(
 	the-unarchiver
 	tvshows
 	macdown
+	hands-off
 )
 brew cask install --appdir="/Applications" ${apps[@]}
 
