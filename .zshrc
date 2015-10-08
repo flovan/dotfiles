@@ -3,10 +3,10 @@
 ###############################################################################
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/winteregel/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Theme (~/.oh-my-zsh/themes)
-ZSH_THEME="clean"
+ZSH_THEME="Clean"
 
 # Plugins (~/.oh-my-zsh/plugins)
 plugins=(git sublime)
