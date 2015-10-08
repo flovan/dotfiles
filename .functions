@@ -35,3 +35,67 @@ function o() {
 		open "$@";
 	fi;
 }
+
+function generateWebFonts () {
+	for var in "$@"
+	do
+	    sfnt2woff $var
+	    woff2 $var
+	done
+}
+
+## Add command to setup iTerm for working on a project
+function workOn () {
+	ROOT=/Applications/MAMP/htdocs/adagio
+	TARGET=""
+	HS=""
+
+	# Find out if the folder exists
+	if [ -d "$ROOT/adagio/$1" ]
+	then
+		TARGET=$ROOT/adagio/$1
+	elif [ -d "$ROOT/$1" ]
+	then
+			TARGET=$ROOT/$1
+	else
+		echo "No such project"
+		exit 0
+	fi
+
+	# Go to the folder
+	echo "Moving to $TARGET"
+	cd $TARGET
+	clear
+
+	# Find out if there is a Headstart folder
+	if [ -d "$TARGET/headstart" ]
+	then
+		HS=$TARGET/headstart
+	elif [ -d "$TARGET/private" ]
+	then
+		HS=$TARGET/private
+	elif [ -f "$TARGET/config.json" -o -f "$TARGET/.headstartrc" ];
+	then
+		HS=$TARGET
+	else
+		echo "No Headstart executable found"
+		exit 0
+	fi
+
+	# Make a new tab
+	osascript 2>/dev/null <<EOF
+      tell application "iTerm" to activate
+      tell application "System Events"
+        tell process "iTerm"
+          tell menu item "Split Vertically With Current Profile" of menu "Shell" of menu bar item "Shell" of menu bar 1
+            click
+          end tell
+        end tell
+        keystroke "cd $HS;"
+        keystroke return
+        keystroke "clear; hs build --s;"
+        keystroke return
+      end tell
+EOF
+	# osascript ~/.bin/iterm-tab
+}

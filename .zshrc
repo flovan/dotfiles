@@ -12,7 +12,6 @@ ZSH_THEME="Clean"
 plugins=(git sublime)
 
 # User configuration
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 source $ZSH/oh-my-zsh.sh
 
 ###############################################################################

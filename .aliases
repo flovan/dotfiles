@@ -29,3 +29,9 @@ alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Globalize Composer
+alias composer="php /usr/local/bin/composer.phar"
+
+# Add a refresh command to source this config file
+alias refresh="source ~/.zshrc"
