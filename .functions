@@ -40,7 +40,7 @@ function generateWebFonts () {
 	for var in "$@"
 	do
 	    sfnt2woff $var
-	    woff2 $var
+	    woff2_compress $var
 	done
 }
 
