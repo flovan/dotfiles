@@ -4,8 +4,10 @@
 
 ### Installation & Update
 
+In `~/Projects`:
+
 ```bash
-cd; curl -#L https://github.com/flovan/dotfiles/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,bootstrap.sh,LICENSE-MIT.txt} && cd dotfiles && set -- -f; source bootstrap.sh
+git clone https://github.com/flovan/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
 ### New Mac Setup

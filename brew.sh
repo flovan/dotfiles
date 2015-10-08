@@ -50,33 +50,7 @@ brew install imagemagick --with-webp
 
 # Install Cask and apps
 brew install caskroom/cask/brew-cask
-caskapps=(
-	dropbox
-	google-chrome
-	firefox
-	opera
-	slack
-	iterm2
-	sublime-text3
-	virtualbox
-	vlc
-	skype
-	transmission
-	ember
-	flux
-	github-desktop
-	imageoptim
-	licecap
-	mamp
-	adobe-creative-cloud
-	transmit
-	teamviewer
-	the-unarchiver
-	tvshows
-	macdown
-	hands-off
-)
-brew cask install --appdir="/Applications" ${apps[@]}
+brew cask install --appdir="/Applications"  dropbox google-chrome firefox opera slack iterm2 sublime-text3 vlc skype transmission ember flux github-desktop imageoptim licecap mamp adobe-creative-cloud transmit teamviewer the-unarchiver tvshows macdown hands-off
 
 # Remove outdated versions from the cellar.
 brew cleanup
