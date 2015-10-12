@@ -5,11 +5,8 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~"
 
-# Link Composer
-alias composer=/usr/local/bin/composer.phar
-
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+alias update="sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -17,6 +14,8 @@ alias localip="ipconfig getifaddr en0"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias nods="defaults write com.apple.desktopservices DSDontWriteNetworkStores true"
+alias yesds="defaults write com.apple.desktopservices DSDontWriteNetworkStores false"
 
 # Empty the Trash on all mounted volumes and the main HDD.
 # Also, clear Apple’s System Logs to improve shell startup speed.
@@ -35,3 +34,8 @@ alias composer="php /usr/local/bin/composer.phar"
 
 # Add a refresh command to source this config file
 alias refresh="source ~/.zshrc"
+
+# Add aliases to cd to different work environments
+alias work="cd $HOME/Work/Projects"
+alias fun="cd $HOME/Projects"
+alias play="fun"
