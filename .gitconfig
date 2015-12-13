@@ -7,19 +7,19 @@
 	s = status -s
 
 	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	d = diff
 
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
 	# Pull in remote changes for the current repository and all its submodules
-	p = !"git pull; git submodule foreach git pull origin master"
+	p = push
 
 	# Clone a repository including all submodules
-	c = clone --recursive
+	c = clone
 
 	# Commit all changes
-	ca = !git add -A && git commit -av
+	ca = !git add -A && git commit -m
 
 	# Switch to a branch, creating it if necessary
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
@@ -28,6 +28,15 @@
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
+	co = checkout
+	cob = checkout -b
+	br = branch
+	brv = branch -v
+	st = status
+	a = add
+	aa = add -A
+	cm = commit
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
 [color]
 
@@ -73,7 +82,7 @@
 	# Use the Git 1.x.x default to avoid errors on machines with old Git
 	# installations. To use `simple` instead, add this to your `~/.extra` file:
 	# `git config --global push.default simple`. See http://git.io/mMah-w.
-	default = matching
+	default = simple
 	# Make `git push` push relevant annotated tags when pushing branches out.
 	followTags = true
 
@@ -98,3 +107,10 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[user]
+	name = Florian
+	email = accounts@flovan.me

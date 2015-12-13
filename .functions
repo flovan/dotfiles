@@ -1,3 +1,13 @@
+# Open the right older based on the time of day
+function atm() {
+	currTime=`date +%k%M`
+	if [ $currTime -gt 800 -a $currTime -lt 1800 ]; then
+		work
+	else
+	    fun
+	fi
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
@@ -19,9 +29,9 @@ function dataurl() {
 
 # Compare original and gzipped file size
 function gz() {
-	local origsize=$(wc -c < "$1");
-	local gzipsize=$(gzip -c "$1" | wc -c);
-	local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
+	origsize=$(wc -c < "$1");
+	gzipsize=$(gzip -c "$1" | wc -c);
+	ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
 	printf "orig: %d bytes\n" "$origsize";
 	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
@@ -37,10 +47,10 @@ function o() {
 }
 
 # Generate woff and woff2 webfonts in one command
-function generateWebFonts () {
+function webf () {
 	for var in "$@"
 	do
-	    sfnt2woff $var
+	    sfnt2woff-zopfli $var
 	    woff2_compress $var
 	done
 }
