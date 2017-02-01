@@ -1,70 +1,60 @@
-# Open the right older based on the time of day
-function atm() {
-	currTime=`date +%k%M`
-	if [ $currTime -gt 800 -a $currTime -lt 1800 ]; then
-		work
-	else
-	    fun
-	fi
-}
-
 # Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$_";
+  mkdir -p "$@" && cd "$_";
 }
 
 # Change working directory to the top-most Finder window location
 function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
 # Create a data URL from a file
 function dataurl() {
-	local mimeType=$(file -b --mime-type "$1");
-	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8";
-	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+  local mimeType=$(file -b --mime-type "$1");
+  if [[ $mimeType == text/* ]]; then
+    mimeType="${mimeType};charset=utf-8";
+  fi
+  echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
 # Compare original and gzipped file size
 function gz() {
-	origsize=$(wc -c < "$1");
-	gzipsize=$(gzip -c "$1" | wc -c);
-	ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
-	printf "orig: %d bytes\n" "$origsize";
-	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
+  origsize=$(wc -c < "$1");
+  gzipsize=$(gzip -c "$1" | wc -c);
+  ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
+  printf "orig: %d bytes\n" "$origsize";
+  printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
 
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 function o() {
-	if [ $# -eq 0 ]; then
-		open .;
-	else
-		open "$@";
-	fi;
+  if [ $# -eq 0 ]; then
+    open .;
+  else
+    open "$@";
+  fi;
 }
 
 # Generate woff and woff2 webfonts in one command
 function webf () {
-	for var in "$@"
-	do
-	    sfnt2woff-zopfli $var
-	    woff2_compress $var
-	done
+  for var in "$@"
+  do
+    sfnt2woff-zopfli $var
+    woff2_compress $var
+  done
 }
 
 # Symlink a projects folder to localhost environment
 function sym () {
-	trg=/Applications/MAMP/htdocs/${PWD##*/}
+  trg=/Applications/MAMP/htdocs/${PWD##*/}
 
-	if [ -d "$trg" ]
-	then
-		echo "Project already symlinked"
-		exit 0
-	fi
+  if [ -d "$trg" ]
+  then
+    echo "Project already symlinked"
+    exit 0
+  fi
 
-	ln -s ${PWD} $trg
-	echo "Symlink created at $trg"
+  ln -s ${PWD} $trg
+  echo "Symlink created at $trg"
 }

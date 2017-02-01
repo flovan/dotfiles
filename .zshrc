@@ -9,7 +9,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="Clean"
 
 # Plugins (~/.oh-my-zsh/plugins)
-plugins=(git sublime)
+plugins=(git sublime atom zsh-syntax-highlighting)
 
 # User configuration
 source $ZSH/oh-my-zsh.sh
@@ -25,6 +25,6 @@ export PATH="$HOME/bin:$PATH";
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;

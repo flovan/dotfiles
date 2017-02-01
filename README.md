@@ -2,36 +2,32 @@
 
 *Fork of [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)*
 
-### Installation & Update
+## Installation
 
-In `~/Projects`:
+If these files are installed on a fresh macOS installation, skip to the next section, otherwise...
+
+Pull down the code and run the bootstrap script:
 
 ```bash
 git clone https://github.com/flovan/dotfiles.git && cd dotfiles && source bootstrap.sh
 ```
 
-### New Mac Setup
-
-Install Oh My Zsh
+To update, run the bootstrap script again:
 
 ```bash
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+source bootstrap.sh
 ```
 
-Tweak OS X defaults:
+## Fresh macOS installation
+
+Make default directories for development (opinionated):
 
 ```bash
-./.osx
+mkdir -p ~/dev/flovan && cd ~/dev/flovan
 ```
 
-Install [Homebrew](http://brew.sh/):
+Pull down the code and run the mac setup script:
 
 ```bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-Install some formulae:
-
-```bash
-./brew.sh
+git clone https://github.com/flovan/dotfiles.git && cd dotfiles && source setup-mac.sh
 ```
